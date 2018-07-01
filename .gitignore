@@ -1,0 +1,12 @@
+# Global
+*.DS_Store
+Desktop.ini
+Thumbs.db
+
+# Project
+package-lock.json
+*.sublime-project
+*.sublime-workspace
+.firebaserc
+/functions/node_modules/
+/functions/lib/

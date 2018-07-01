@@ -1,0 +1,12 @@
+*:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#theButton {
+	min-width: 200px;
+}
+
+#footer {
+	padding-bottom: 10px;
+}
