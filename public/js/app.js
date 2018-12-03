@@ -1,6 +1,6 @@
 const firestore = firebase.firestore();
-  const settings = {/* Settings for more complex Firestore configs... */ timestampsInSnapshots: true};
-  firestore.settings(settings);
+const settings = {/* Settings for more complex Firestore configs... */ timestampsInSnapshots: true};
+firestore.settings(settings);
 
 // Note to self: collections come first
 const docRef = firestore.doc("data/buttonClicks");
@@ -23,7 +23,6 @@ theButton.addEventListener("click", function () {
     docRef.set({
         clickNumber: ++currentCount,
         stopwatchTime: startTime,
-
     }).then(function () {
         console.log("Status saved!");
     }).catch(function (error) {
@@ -37,11 +36,13 @@ theButton.addEventListener("click", function () {
 getRealTimeUpdates = function () {
     docRef.onSnapshot(function (doc) {
         if (doc && doc.exists) {
+            // Fetch data from Firestore
             const myData = doc.data();
             theButton.innerText = myData.clickNumber;
             theButton.value = myData.clickNumber;
             startTime = myData.stopwatchTime;
 
+            // Calculate time since last click
             var interval = setInterval(function() {
                 var elapsedTime = Date.now() - startTime;
                 if (elapsedTime < 0) elapsedTime = 0;
